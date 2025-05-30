@@ -9,10 +9,10 @@ Použité techniky: DDL, DML, triggery, PL/SQL procedury a funkce.
 Jednoduchá relační databáze s naplněním testovacími daty a následnou analýzou pomocí SQL dotazů.
 Analýzy: Přehled účastníků, součty záloh a doplatků, ztrátové zájezdy, nejstarší účastník.
 
-3)Zoologická zahrada – Datová analýza
+3) Zoologická zahrada – Datová analýza
 Sada komplexních SQL dotazů demonstrujících práci s více tabulkami a podmínkami.
 Použité techniky: JOIN, NOT EXISTS, agregace (SUM, COUNT, MAX), podmínky WHERE.
 
-4)Knihovna – Závěrečná databázová zkouška
+4) Knihovna – Závěrečná databázová zkouška
 Práce s relační databází knihovny a analýza dat pomocí SQL příkazů.
-➤ Použité techniky: SELECT, JOIN, GROUP BY, COUNT, SUM, AVG, poddotazy.
+Použité techniky: SELECT, JOIN, GROUP BY, COUNT, SUM, AVG, poddotazy.
