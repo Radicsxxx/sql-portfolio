@@ -1,4 +1,4 @@
---1. Kterého roku se narodil nejèastìji nemocný exponát?
+--1. KterÃ©ho roku se narodil nejÃ¨astÃ¬ji nemocnÃ½ exponÃ¡t?
 
 SELECT EXPONAT,JMENO,ROK_NAR
 FROM
@@ -20,7 +20,7 @@ GROUP BY EXPONAT,JMENO,ROK_NAR
 ))
 
 
---2. A kterého roku jeho ošetøovatel?
+--2. A kterÃ©ho roku jeho oÅ¡etÃ¸ovatel?
 
 SELECT JMENO|| ' ' ||PRIJMENI as celeJmeno,ROK_NAR
 FROM
@@ -46,7 +46,7 @@ GROUP BY EXPONATY2.ROK_NAR,OSETROVATELE2.PRIJMENI,OSETROVATELE2.JMENO,OSETROVATE
 )) 
     
     
---3. Kolik zaplatila Zoo jednotlivým veterináøùm za léèení hrochù?
+--3. Kolik zaplatila Zoo jednotlivÃ½m veterinÃ¡Ã¸Ã¹m za lÃ©Ã¨enÃ­ hrochÃ¹?
 
 SELECT pocet*sazba_den,cele_jmeno
 FROM
@@ -66,7 +66,7 @@ WHERE DRUH='Hroch'
 group by jmeno,prijmeni,sazba_den
 )
 
---4. Na léèení kterého exponátu zaplatila Zoo nejvíce?
+--4. Na lÃ©Ã¨enÃ­ kterÃ©ho exponÃ¡tu zaplatila Zoo nejvÃ­ce?
 SELECT utrata_za_zvire,JMENO
 FROM
 (
@@ -100,7 +100,7 @@ ON nemoci2.veterinar=veterinari2.ident
 GROUP BY  jmeno
 )
 )
---5. Který exponát nebyl v Zoo vùbec léèen?
+--5. KterÃ½ exponÃ¡t nebyl v Zoo vÃ¹bec lÃ©Ã¨en?
 SELECT *FROM  EXPONATY2
 WHERE NOT EXISTS
 (
@@ -109,7 +109,7 @@ FROM NEMOCI2
 WHERE EXPONATY2.INV_CIS=NEMOCI2.EXPONAT
 )
 
---6. Jaké vzdìlání mají ošetøovatelé exponátù, které léèil nejdražší veterináø?
+--6. JakÃ© vzdÃ¬lÃ¡nÃ­ majÃ­ oÅ¡etÃ¸ovatelÃ© exponÃ¡tÃ¹, kterÃ© lÃ©Ã¨il nejdraÅ¾Å¡Ã­ veterinÃ¡Ã¸?
 SELECT jmeno ||' '||prijmeni as cele_jmeno,vzdelani FROM 
 (
 SELECT osetrovatele2.jmeno, osetrovatele2.prijmeni, osetrovatele2.vzdelani 
@@ -156,30 +156,7 @@ GROUP BY jmeno,prijmeni,vzdelani
 
 
 
-SELECT vzdelani FROM 
-(
-SELECT * FROM VETERINARI2
-INNER JOIN nemoci2 ON
-nemoci2.veterinar=VETERINARI2.IDENT
-inner join exponaty2 ON
-nemoci2.exponat=exponaty2.inv_cis
-left JOIN osetrovatele2 ON 
-exponaty2.osetrovatel=osetrovatele2.os_cis
-WHERE sazba_den=
-(
-SELECT MAX(sazba_den)
-FROM 
-(
-SELECT * FROM VETERINARI2
-INNER JOIN nemoci2 ON
-nemoci2.veterinar=VETERINARI2.IDENT
-inner join exponaty2 ON
-nemoci2.exponat=exponaty2.inv_cis
-left JOIN osetrovatele2 ON 
-exponaty2.osetrovatel=osetrovatele2.os_cis
-)
-)
-)
+
 
 
 
